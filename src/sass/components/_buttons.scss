@@ -1,0 +1,33 @@
+$btn-primary: #334257;
+$btn-danger: #E74C3C;
+$btn-default: #47A2DE;
+
+.btn {
+  background-color: $white;
+  border: none;
+  padding: 10px 20px;
+
+  &-primary{
+    color: $white;
+    background-color: $btn-primary;
+
+    :hover{
+      background-color: darken($btn-primary, 5);
+    }
+  }
+  &-danger{
+    color: $white;
+    background-color: $btn-danger;
+
+    :hover{
+      background-color: darken($btn-danger, 5);
+    }
+  }
+  &-default{
+    color: $white;
+    background-color: $btn-default;
+    :hover{
+      background-color: darken($btn-default, 5);
+    }
+  }
+}
