@@ -4,8 +4,9 @@
   "description": "A simple setup with webpack + node scripts",
   "main": "src/js/index.js",
   "scripts": {
-    "start": "npm-run-all *:watch",
-    "sass:watch": "node-sass src/sass/app.scss build/css/app.css --watch",
+    "start": "npm-run-all --parallel open:src *:watch",
+    "open:src": "open http://starter.dev",
+    "sass:watch": "node-sass src/sass/app.scss public/css/app.css --watch",
     "webpack:watch": "webpack --watch"
   },
   "repository": {
@@ -32,6 +33,7 @@
     "browser": "^0.2.6",
     "node-sass": "^3.10.0",
     "npm-run-all": "^3.1.0",
+    "open": "0.0.5",
     "webpack": "^1.13.2"
   },
   "dependencies": {

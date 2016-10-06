@@ -78,6 +78,9 @@ html {
     margin-right: 10px;
     width: calc(100% - 20px); } }
 
+h1 {
+  color: #2a3647; }
+
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 100;
