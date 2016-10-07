@@ -6,28 +6,29 @@ $btn-default: #47A2DE;
   background-color: $white;
   border: none;
   padding: 10px 20px;
+  border-radius: 5px;
 
-  &-primary{
-    color: $white;
-    background-color: $btn-primary;
+  &-primary {
+    color: $btn-primary;
+    border: 2px solid $wet-asphalt;
 
-    :hover{
-      background-color: darken($btn-primary, 5);
+    :hover {
+      background-color: darken($wet-asphalt, 5);
     }
   }
-  &-danger{
-    color: $white;
-    background-color: $btn-danger;
+  &-danger {
+    color: $btn-danger;
+    border: 1px solid $btn-danger;
 
-    :hover{
-      background-color: darken($btn-danger, 5);
+    :hover {
+      border: 2px solid darken($btn-danger, 5);
     }
   }
-  &-default{
-    color: $white;
-    background-color: $btn-default;
-    :hover{
-      background-color: darken($btn-default, 5);
+  &-default {
+    color: $btn-default;
+    border: 1px solid $btn-default;
+    :hover {
+      border: 2px solid darken($btn-default, 5);
     }
   }
 }

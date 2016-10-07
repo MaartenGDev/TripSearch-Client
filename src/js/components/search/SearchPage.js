@@ -13,10 +13,10 @@ class SearchPage extends React.Component {
         this.search = this.search.bind(this);
     }
 
-    componentDidMount() {
+    search() {
         let form = new FormData();
 
-        form.append('search', document.querySelector('.search').value);
+        form.append('search', document.getElementById('search').value);
 
         fetch('https://search.dev/', {
             method: 'POST',
@@ -24,19 +24,15 @@ class SearchPage extends React.Component {
         })
             .then((res) => res.json())
             .then((data) => this.setState({result: data}));
-    }
-    search(){
-        const searchValue = document.getElementById('search').value;
 
-        console.log(searchValue);
     }
+
     render() {
         return (
-            <div>
-                <h1>Search Result Page</h1>
+            <main className="card">
                 <SearchBar search={() => this.search()}/>
                 <SearchResult result={this.state.result}/>
-            </div>
+            </main>
         )
     }
 }

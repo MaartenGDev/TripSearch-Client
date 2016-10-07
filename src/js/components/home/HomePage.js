@@ -3,9 +3,9 @@ import React from "react";
 class HomePage extends React.Component {
     render() {
         return (
-            <div className="landingPage">
+            <main className="card">
                 <h1>Welcome! Here !</h1>
-            </div>
+            </main>
         )
     }
 }

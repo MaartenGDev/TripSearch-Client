@@ -1,17 +1,17 @@
-.cards {
+.card {
   @include card;
-  background-color: $blue;
-  left: 0;
-  margin: 0 auto;
-
-  right: 0;
-  text-align: left;
+  margin: 20px auto 0 auto;
   width: 960px;
-  z-index: 3;
+  padding: 10px;
+
+
+  h1{
+    margin-top: 0;
+  }
 }
 
 @media screen and (max-width: $medium-breakpoint) {
-  .cards {
+  .card {
     margin-left: 10px;
     margin-right: 10px;
     width: calc(100% - 20px);

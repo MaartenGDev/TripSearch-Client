@@ -20,9 +20,12 @@
 @import 'components/buttons';
 @import 'components/chips';
 @import 'components/card';
+@import 'components/input';
 
 // Per page styles
 @import 'pages/home';
+@import 'pages/search';
+
 
 // Theme
 @import 'themes/theme';
