@@ -7,16 +7,21 @@ class SearchPage extends React.Component {
         super(props);
 
         this.state = {
-            result: {}
+            result: {
+                search: '',
+                result_title: '',
+                data: {}
+            }
         };
 
         this.search = this.search.bind(this);
+        this.handleTypeEvent = this.handleTypeEvent.bind(this);
     }
 
     search() {
         let form = new FormData();
 
-        form.append('search', document.getElementById('search').value);
+        form.append('search', this.state.result.search);
 
         fetch('https://search.dev/', {
             method: 'POST',
@@ -27,11 +32,34 @@ class SearchPage extends React.Component {
 
     }
 
+    handleTypeEvent({target}) {
+        console.log(target.value);
+        this.setState({
+            result: {
+                search: target.value,
+                result_title: this.state.result.result_title,
+                data: this.state.result.data
+            }
+        });
+    }
+
     render() {
+        const hasResult = 'attraction' in this.state.result.data;
+
+        const mainBackground = hasResult ? this.state.result.data['attraction'].media.main : '';
+        const detailsBackground = hasResult ? this.state.result.data['attraction'].media.details : '';
+
         return (
-            <main className="card">
-                <SearchBar search={() => this.search()}/>
-                <SearchResult result={this.state.result}/>
+            <main>
+                <section className="card">
+                    <SearchBar onChange={this.handleTypeEvent} searchQuery={this.state.result.search}
+                               search={() => this.search()}/>
+                </section>
+
+                {hasResult ? <section className="card planner-search-result-preview"
+                         style={ hasResult ? {backgroundImage: 'url(' + mainBackground + ')'} : null}>
+                    <SearchResult title={this.state.result.result_title} result={this.state.result.data}/>
+                </section> : null}
             </main>
         )
     }

@@ -10,8 +10,11 @@ const SearchResult = (props) => {
         return <SearchItem key={counter} item={result[key]}/> ;
     });
 
+    const title = data.length > 0 ? <p className="planner-search-title">{props.title}</p> : null;
+
     return (
         <div>
+            {title}
             {data}
         </div>
     )

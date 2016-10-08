@@ -4,7 +4,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <main className="card">
-                <h1>Welcome! Here !</h1>
+                <h1>TripSearch</h1>
             </main>
         )
     }

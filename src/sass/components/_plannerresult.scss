@@ -1,0 +1,28 @@
+.result-item{
+  @include card;
+  background-color: $white;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+}
+
+.result-item-icon{
+  display: inline-block;
+  padding: 15px;
+  background-color: $peter-river;
+
+  i{
+    color: $white;
+  }
+}
+.result-item-details{
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: top;
+
+}
+.result-item-location{
+  margin: 10px 0 0 0;
+}
+.result-item-title{
+  margin: 0;
+}

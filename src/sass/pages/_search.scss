@@ -1,14 +1,9 @@
 #search{
-  width: calc(100% - 200px);
-  border-radius: 5px;
+  width: calc(100% - 20px);
   padding: 10px;
-  border: 2px solid $wet-asphalt;
+  margin-left: 5px;
 }
 
-#search_button{
-  width: 190px;
-  margin-left: 10px;
-}
 
 .search-input{
   font-size: 16px;

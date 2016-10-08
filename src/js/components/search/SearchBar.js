@@ -3,8 +3,8 @@ import React from 'react';
 const SearchBar = (props) => {
     return (
         <div className="planner-search">
-            <input className="search-input" type="text" id="search" />
-            <button id="search_button" className="search-input btn btn-primary" onClick={props.search}>Search</button>
+            <i id="search-button" className="fa fa-search" aria-hidden="true" onClick={props.search}></i>
+            <input className="search-input" type="text" id="search" value={props.searchQuery} onChange={props.onChange}/>
         </div>
     )
 };
