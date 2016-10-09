@@ -7,10 +7,11 @@ class SearchPage extends React.Component {
         super(props);
 
         this.state = {
+            analyseResult: {},
             result: {
                 search: '',
                 result_title: '',
-                data: {}
+                data: {},
             }
         };
 
@@ -32,13 +33,26 @@ class SearchPage extends React.Component {
 
     }
 
+    getSuggestions(){
+        let form = new FormData();
+
+        form.append('search', this.state.result.search);
+
+        fetch('https://search.dev/analyse.php', {
+            method: 'POST',
+            body: form
+        })
+            .then((res) => res.json())
+            .then((data) => this.setState({analyseResult: data}));
+    }
+
     handleTypeEvent({target}) {
-        console.log(target.value);
+        this.getSuggestions();
         this.setState({
             result: {
-                search: target.value,
+                search: target.innerHTML,
                 result_title: this.state.result.result_title,
-                data: this.state.result.data
+                data: this.state.result.data,
             }
         });
     }
@@ -52,7 +66,7 @@ class SearchPage extends React.Component {
         return (
             <main>
                 <section className="card">
-                    <SearchBar onChange={this.handleTypeEvent} searchQuery={this.state.result.search}
+                    <SearchBar analyseResult={this.state.analyseResult} onChange={this.handleTypeEvent} searchQuery={this.state.result.search}
                                search={() => this.search()}/>
                 </section>
 
