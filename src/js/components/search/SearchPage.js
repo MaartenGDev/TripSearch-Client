@@ -18,8 +18,6 @@ class SearchPage extends React.Component {
 
         this.search = this.search.bind(this);
         this.handleTypeEvent = this.handleTypeEvent.bind(this);
-        this.highlightKeywords = this.highlightKeywords.bind(this);
-        this.resetTextSearch = this.resetTextSearch.bind(this);
     }
 
     search() {
@@ -41,71 +39,12 @@ class SearchPage extends React.Component {
             }));
     }
 
-    getSuggestions(startPos, anchorOffset, target) {
-
-        let form = new FormData();
-        form.append('search', this.state.result.search);
-
-        fetch('https://search.dev/analyse.php', {
-            method: 'POST',
-            body: form
-        })
-            .then((res) => res.json())
-            .then((data) => {
-
-                this.resetTextSearch(target);
-
-                this.setState({
-                    analyseResult: data
-                });
-
-
-                this.setState({
-                    result: {
-                        search: this.state.result.search,
-                        searchHtml: this.stripHtml(this.state.result.searchHtml),
-                        data: this.state.result.data,
-                        result_title: this.state.result.result_title
-                    }
-                });
-
-
-            });
-
-
-    }
-
-    resetTextSearch(target) {
-
-
-
-    }
-
-    highlightKeywords(sentence) {
-        let searchHtml = this.stripHtml(sentence);
-
-        const analyseResult = this.state.analyseResult;
-
-        let replacements = [];
-
-        Object.keys(analyseResult).forEach((key) => {
-            const item = analyseResult[key];
-
-            let search = searchHtml.substr(item.start, item.end - item.start);
-
-            replacements.push(search);
-        });
-
-        replacements.forEach((item) => {
-            searchHtml = searchHtml.replace(item, '<span style="color: red">' + item + '</span>');
-        });
-        return searchHtml;
-    }
-
     stripHtml(html) {
-        var tmp = document.createElement("DIV");
-        tmp.innerHTML = html;
-        return tmp.textContent || tmp.innerText;
+        var divMock = document.createElement("DIV");
+
+        divMock.innerHTML = html;
+
+        return divMock.textContent || divMock.innerText;
     }
 
     handleTypeEvent({target}) {
@@ -122,9 +61,7 @@ class SearchPage extends React.Component {
 
     render() {
         const hasResult = 'attraction' in this.state.result.data;
-
         const mainBackground = hasResult ? this.state.result.data['attraction'].media.main : '';
-        const detailsBackground = hasResult ? this.state.result.data['attraction'].media.details : '';
 
         return (
             <main>
