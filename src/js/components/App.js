@@ -7,7 +7,6 @@ class App extends React.Component{
         return (
             <div>
                 <Header/>
-                <script src=""></script>
                 <Helmet
                     htmlAttributes={{"lang": "en", "amp": undefined}}
                     title="TripSearch"

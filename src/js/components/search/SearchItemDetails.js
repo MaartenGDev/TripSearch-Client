@@ -1,18 +1,32 @@
 import React from 'react';
-import {withGoogleMap, GoogleMap} from "react-google-maps";
+import {withGoogleMap, GoogleMap, Marker} from "react-google-maps";
 
 const SearchItemDetail = (props) => {
         const isActive = props.isActive;
 
+        const markers = [{
+            position: {
+                lat: props.location.lat,
+                lng: props.location.lon,
+            },
+            key: "parking",
+            defaultAnimation: 2,
+        }];
         if (isActive) {
 
-            console.log(props);
             const Map = withGoogleMap(test => (
                 <GoogleMap
                     defaultZoom={16}
                     defaultCenter={{lat: props.location.lat, lng: props.location.lon}}
-                />
+                >
+                    {markers.map(marker => (
+                        <Marker
+                            {...marker}
+                        />
+                    ))}
+                </GoogleMap>
             ));
+
 
             let content = null;
 
@@ -27,9 +41,9 @@ const SearchItemDetail = (props) => {
                             mapElement={
                                 <div style={{height: `200px`}}/>
                             }
-
                         />
-                    </div>)
+                    </div>
+                )
             } else {
                 content = (
                     <div className="result-item-detail">
@@ -38,7 +52,7 @@ const SearchItemDetail = (props) => {
                             <img src={props.image}/>
                         </div>
                         <div className="result-item-detail-description">
-                            < p > {props.description}</p>
+                            <p> {props.description}</p>
                         </div>
                     </div>
                 )
