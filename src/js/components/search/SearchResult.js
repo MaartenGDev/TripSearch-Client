@@ -8,8 +8,6 @@ const SearchResult = (props) => {
     const data = Object.keys(result).map((key) => {
         counter++;
         const item = result[key];
-        console.log(key);
-        console.log(key === 'parking');
         return <SearchItem key={counter} item={item} showMap={key === 'parking'}/> ;
     });
     const title = data.length > 0 ? <p className="planner-search-title">{props.title}</p> : null;

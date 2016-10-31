@@ -17,7 +17,7 @@ class App extends React.Component{
                         {"name": "description", "content": "TripSearch Application"},
                     ]}
                     script={[
-                        {"src": "https://maps.googleapis.com/maps/api/js?key=TOKEN_HERE&callback=initMap", "type": "text/javascript"}
+                        {"src": "https://maps.googleapis.com/maps/api/js?key=TOKEN_HERE&v=3.exp", "type": "text/javascript"}
                     ]}
                 />
                 {this.props.children}

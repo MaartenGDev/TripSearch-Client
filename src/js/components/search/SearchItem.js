@@ -1,7 +1,4 @@
 import React from 'react';
-import { withGoogleMap, GoogleMap } from "react-google-maps";
-
-import SearchItemDetail from './SearchItemDetails';
 
 class SearchItem extends React.Component {
     constructor(props) {
@@ -29,7 +26,6 @@ class SearchItem extends React.Component {
                     <p className="result-item-title"><b>{title}</b></p>
                     <p className="result-item-location">{city + ' ' + location.address}</p>
                 </div>
-                <SearchItemDetail showMap={this.props.showMap} location={location} isActive={this.state.isActive} image={media.details} description={long_description}/>
             </div>
         )
     }

@@ -1,16 +1,16 @@
 import React from "react";
 import SearchResult from "./SearchResult";
 import SearchBar from './SearchBar';
+import {withGoogleMap, GoogleMap, Marker} from "react-google-maps";
 
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            analyseResult: {},
+            searchQuery: '',
             result: {
                 search: '',
-                searchHtml: '',
                 result_title: '',
                 data: {},
             }
@@ -32,47 +32,60 @@ class SearchPage extends React.Component {
             .then((data) => this.setState({
                 result: {
                     search: data.search,
-                    searchHtml: data.search,
                     result_title: data.result_title,
                     data: data.data,
                 }
             }));
     }
 
-    stripHtml(html) {
-        var divMock = document.createElement("DIV");
-
-        divMock.innerHTML = html;
-
-        return divMock.textContent || divMock.innerText;
-    }
 
     handleTypeEvent({target}) {
-        const search = this.stripHtml(target.innerText);
         this.setState({
-            result: {
-                search: search,
-                searchHtml: search,
-                result_title: this.state.result.result_title,
-                data: this.state.result.data,
-            }
+            searchQuery: target.value
         });
     }
 
     render() {
         const hasResult = 'attraction' in this.state.result.data;
-        const mainBackground = hasResult ? this.state.result.data['attraction'].media.main : '';
+
+        const markers = [{
+            position: {
+                lat: 52.3747388,
+                lng: 4.7585316,
+            },
+            key: "parking",
+            defaultAnimation: 2,
+        }];
+
+        const Map = withGoogleMap(setting => (
+            <GoogleMap
+                defaultZoom={16}
+                defaultCenter={{lat: 52.3747388, lng: 4.7585316}}
+            >
+                {markers.map(marker => (
+                    <Marker
+                        {...marker}
+                    />
+                ))}
+            </GoogleMap>
+        ));
+
 
         return (
             <main>
+                <Map
+                    containerElement={
+                        <div style={{height: `200px`}}/>
+                    }
+                    mapElement={
+                        <div style={{height: `200px`}}/>
+                    }
+                />
                 <section className="card">
-                    <SearchBar analyseResult={this.state.analyseResult} onChange={(node) => this.handleTypeEvent(node)}
-                               searchQuery={this.state.result.searchHtml}
-                               search={() => this.search()}/>
+                    <SearchBar onChange={(e) => this.handleTypeEvent(e)} searchQuery={this.state.searchQuery} search={() => this.search()}/>
                 </section>
 
-                {hasResult ? <section className="card planner-search-result-preview"
-                                      style={ hasResult ? {backgroundImage: 'url(' + mainBackground + ')'} : null}>
+                {hasResult ? <section className="card planner-search-result-preview">
                     <SearchResult title={this.state.result.result_title} result={this.state.result.data}/>
                 </section> : null}
             </main>
