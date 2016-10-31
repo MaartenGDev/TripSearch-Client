@@ -3,12 +3,12 @@ import SearchResult from "./SearchResult";
 import SearchBar from './SearchBar';
 import {withGoogleMap, GoogleMap, Marker} from "react-google-maps";
 
+
 class SearchPage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            searchQuery: '',
             result: {
                 search: '',
                 result_title: '',
@@ -16,52 +16,59 @@ class SearchPage extends React.Component {
             }
         };
 
-        this.search = this.search.bind(this);
-        this.handleTypeEvent = this.handleTypeEvent.bind(this);
+        this.showResult = this.showResult.bind(this);
     }
 
-    search() {
-        let form = new FormData();
-        form.append('search', this.state.result.search);
-
-        fetch('https://search.dev/', {
-            method: 'POST',
-            body: form
-        })
-            .then((res) => res.json())
-            .then((data) => this.setState({
-                result: {
-                    search: data.search,
-                    result_title: data.result_title,
-                    data: data.data,
-                }
-            }));
-    }
-
-
-    handleTypeEvent({target}) {
+    showResult(data) {
         this.setState({
-            searchQuery: target.value
-        });
+            result: data
+        })
     }
 
     render() {
-        const hasResult = 'attraction' in this.state.result.data;
+        let markers = [];
+        let defaultCenter = {lat: 52.3747388, lng: 4.7585316};
+        if ('attraction' in this.state.result.data) {
+            const {attraction, parking, shop} = this.state.result.data;
 
-        const markers = [{
-            position: {
-                lat: 52.3747388,
-                lng: 4.7585316,
-            },
-            key: "parking",
-            defaultAnimation: 2,
-        }];
+            defaultCenter = {
+                lat: attraction.location.lat,
+                lng: attraction.location.lon
+            };
+            markers = [
+                {
+                    position: {
+                        lat: attraction.location.lat,
+                        lng: attraction.location.lon,
+                    },
+                    key: 'attraction',
+                    defaultAnimation: 2
+                },
+                {
+                    position: {
+                        lat: parking.location.lat,
+                        lng: parking.location.lon,
+                    },
+                    key: "parking",
+                    defaultAnimation: 2,
+                },
+                {
+                    position: {
+                        lat: shop.location.lat,
+                        lng: shop.location.lon,
+                    },
+                    key: "shop",
+                    defaultAnimation: 2,
+                },
+            ];
+        }
 
-        const Map = withGoogleMap(setting => (
+
+        const Map = withGoogleMap(test => (
             <GoogleMap
                 defaultZoom={16}
-                defaultCenter={{lat: 52.3747388, lng: 4.7585316}}
-            >
+                disableDefaultUI={true}
+                defaultCenter={defaultCenter}>
                 {markers.map(marker => (
                     <Marker
                         {...marker}
@@ -75,19 +82,17 @@ class SearchPage extends React.Component {
             <main>
                 <Map
                     containerElement={
-                        <div style={{height: `200px`}}/>
+                        <div style={{height: `100%`}}/>
                     }
                     mapElement={
-                        <div style={{height: `200px`}}/>
+                        <div style={{height: `100%`}}/>
                     }
                 />
-                <section className="card">
-                    <SearchBar onChange={(e) => this.handleTypeEvent(e)} searchQuery={this.state.searchQuery} search={() => this.search()}/>
-                </section>
+                <SearchBar showResult={(data) => this.showResult(data)} placeholder={this.state.searchQuery}/>
 
-                {hasResult ? <section className="card planner-search-result-preview">
+                <section className="search-results">
                     <SearchResult title={this.state.result.result_title} result={this.state.result.data}/>
-                </section> : null}
+                </section>
             </main>
         )
     }

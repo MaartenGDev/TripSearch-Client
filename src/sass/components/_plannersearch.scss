@@ -1,4 +1,4 @@
-.planner-search-title{
+.planner-search-title {
   margin-top: 25px;
   margin-bottom: 25px;
   color: #fff;
@@ -6,6 +6,28 @@
   font-weight: 500;
 }
 
-.planner-search-result-preview{
+.planner-search-result-preview {
   padding-bottom: 10px;
+}
+
+.planner-search-bar {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+
+  background-color: white;
+  width: 960px;
+  left: 0;
+  right: 0;
+  margin: 10px auto 0 auto;
+
+  @include card;
+  .search-input {
+    padding: 15px;
+    width: calc(100% - 40px);
+  }
+
+  #search-button {
+    margin-left: 10px;
+  }
 }

@@ -6,7 +6,6 @@ class App extends React.Component{
     render() {
         return (
             <div>
-                <Header/>
                 <Helmet
                     htmlAttributes={{"lang": "en", "amp": undefined}}
                     title="TripSearch"
@@ -17,7 +16,6 @@ class App extends React.Component{
                         {"name": "description", "content": "TripSearch Application"},
                     ]}
                     script={[
-                        {"src": "https://maps.googleapis.com/maps/api/js?key=TOKEN_HERE&v=3.exp", "type": "text/javascript"}
                     ]}
                 />
                 {this.props.children}
