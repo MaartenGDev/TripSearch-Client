@@ -90,9 +90,7 @@ class SearchPage extends React.Component {
                 />
                 <SearchBar showResult={(data) => this.showResult(data)} placeholder={this.state.searchQuery}/>
 
-                <section className="search-results">
-                    <SearchResult title={this.state.result.result_title} result={this.state.result.data}/>
-                </section>
+                <SearchResult title={this.state.result.result_title} result={this.state.result.data}/>
             </main>
         )
     }

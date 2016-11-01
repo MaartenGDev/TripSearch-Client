@@ -11,22 +11,27 @@ class SearchItem extends React.Component {
         this.showDetails = this.showDetails.bind(this);
     }
 
-    showDetails(){
+    showDetails() {
         this.setState({isActive: !this.state.isActive});
     }
 
-    render(){
-        const {icon, title,location,media,long_description} = this.props.item;
-        const city = location.city.substr(0,1).toUpperCase() + location.city.substr(1).toLowerCase();
-
+    render() {
+        const {icon, title, location, media, long_description} = this.props.item;
+        const city = location.city.substr(0, 1).toUpperCase() + location.city.substr(1).toLowerCase();
+        const description = long_description.substr(0, 80) + '...';
+        console.log(media);
         return (
-            <div className="result-item" onClick={() => this.showDetails()}>
-                <div className="result-item-icon"><i className={'fa fa-' + icon} /></div>
-                <div className="result-item-details">
-                    <p className="result-item-title"><b>{title}</b></p>
-                    <p className="result-item-location">{city + ' ' + location.address}</p>
-                </div>
-            </div>
+            <section className="result--item" onClick={() => this.showDetails()}>
+                <img className="result--item--image" src={media.main}/>
+                <section className="result--item--details">
+                    <h1 className="result--item--details--title">{title}</h1>
+                    <p className="result--item--details--description">{description}</p>
+                </section>
+                <section className="result--item--actions">
+                    <section>Details</section>
+                    <section>Alternatief</section>
+                </section>
+            </section>
         )
     }
 }

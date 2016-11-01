@@ -38,20 +38,18 @@ class SearchBar extends React.Component {
                         data: data.data,
                     },
                     searchQuery: data.search
-                })
+                });
 
                 this.props.showResult(data);
             });
     }
 
     render() {
-        const value = this.state.searchQuery === '' ? this.props.placeholder : this.state.searchQuery;
-
         return (
             <div className="planner-search planner-search-bar">
                 <i id="search-button" className="fa fa-search" aria-hidden="true" onClick={this.search}></i>
                 <input type="text" className="search-input" id="search" onChange={this.handleTypeEvent}
-                       value={value}/>
+                       value={this.state.searchQuery}/>
             </div>
         )
     }
