@@ -11,7 +11,6 @@
 @import 'base/reset';
 @import 'base/colors';
 
-
 // Layouts
 @import 'layout/header';
 
@@ -24,12 +23,11 @@
 @import 'components/search--results';
 @import 'components/plannersearch';
 @import 'components/search--result--item';
-
+@import 'components/result-detail';
 
 // Per page styles
 @import 'pages/home';
 @import 'pages/search';
-
 
 // Theme
 @import 'themes/theme';

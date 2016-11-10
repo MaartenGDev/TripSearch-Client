@@ -42,8 +42,7 @@ nav {
 .btn {
   background-color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px; }
+  padding: 10px 20px; }
   .btn-primary {
     color: #334257;
     border: 2px solid #34495e; }
@@ -51,12 +50,12 @@ nav {
       background-color: #2b3c4e; }
   .btn-danger {
     color: #E74C3C;
-    border: 1px solid #E74C3C; }
+    border: 2px solid #E74C3C; }
     .btn-danger :hover {
       border: 2px solid #e43725; }
   .btn-default {
     color: #47A2DE;
-    border: 1px solid #47A2DE; }
+    border: 2px solid #47A2DE; }
     .btn-default :hover {
       border: 2px solid #3197da; }
 
@@ -168,6 +167,38 @@ input {
       cursor: pointer; }
       .result--item--actions section:first-child {
         text-align: left; }
+
+.result-detail {
+  background-color: white;
+  border-radius: 3px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  height: 300px; }
+  .result-detail__image {
+    width: 300px;
+    overflow: hidden;
+    height: 100%;
+    display: inline-block; }
+  .result-detail__details {
+    width: calc(100% - 300px);
+    height: 100%;
+    padding: 0 10px;
+    float: right;
+    text-align: left; }
+  .result-detail__buttons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px; }
+  .result-detail__close {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer; }
+  .result-detail__button--first {
+    margin-right: 10px; }
 
 .search-input {
   font-size: 16px; }

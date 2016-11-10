@@ -1,27 +1,20 @@
 import React from 'react';
 
 class SearchItem extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            isActive: false,
-        };
-
-        this.showDetails = this.showDetails.bind(this);
-    }
-
-    showDetails() {
-        this.setState({isActive: !this.state.isActive});
-    }
 
     render() {
-        const {icon, title, location, media, long_description} = this.props.item;
+        const {className, id, item} = this.props;
+        const {title, location, media, long_description} = item;
+
         const city = location.city.substr(0, 1).toUpperCase() + location.city.substr(1).toLowerCase();
-        const description = long_description.substr(0, 80) + '...';
-        console.log(media);
+
+        const readMoreDots = long_description.length > 80 ? '...' : '';
+
+        const description = long_description.substr(0, 80) + readMoreDots;
+
         return (
-            <section className="result--item" onClick={() => this.showDetails()}>
+            <section className={"result--item result--item-1" + " " + className} onClick={() => this.props.showDetails(id)}>
                 <img className="result--item--image" src={media.main}/>
                 <section className="result--item--details">
                     <h1 className="result--item--details--title">{title}</h1>

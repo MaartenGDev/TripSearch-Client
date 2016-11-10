@@ -6,7 +6,6 @@ $btn-default: #47A2DE;
   background-color: $white;
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
 
   &-primary {
     color: $btn-primary;
@@ -18,7 +17,7 @@ $btn-default: #47A2DE;
   }
   &-danger {
     color: $btn-danger;
-    border: 1px solid $btn-danger;
+    border: 2px solid $btn-danger;
 
     :hover {
       border: 2px solid darken($btn-danger, 5);
@@ -26,7 +25,8 @@ $btn-default: #47A2DE;
   }
   &-default {
     color: $btn-default;
-    border: 1px solid $btn-default;
+    border: 2px solid $btn-default;
+
     :hover {
       border: 2px solid darken($btn-default, 5);
     }
