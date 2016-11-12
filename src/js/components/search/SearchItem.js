@@ -14,7 +14,7 @@ class SearchItem extends React.Component {
         const description = long_description.substr(0, 80) + readMoreDots;
 
         return (
-            <section className={"result--item result--item-1" + " " + className} onClick={() => this.props.showDetails(id)}>
+            <section className={"animate pulse result--item result--item-1" + " " + className} onClick={() => this.props.showDetails(id)}>
                 <img className="result--item--image" src={media.main}/>
                 <section className="result--item--details">
                     <h1 className="result--item--details--title">{title}</h1>

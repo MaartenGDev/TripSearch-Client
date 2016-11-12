@@ -6,6 +6,9 @@
   @include card;
   position: relative;
   height: 300px;
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s;
 
   &--image{
     border-radius: 3px 3px 0 0;

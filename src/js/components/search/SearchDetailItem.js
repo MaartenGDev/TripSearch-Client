@@ -7,7 +7,7 @@ class SearchDetailItem extends React.Component {
         const {id, title, description, media, location, alternatives} = this.props;
 
         return (
-            <section className="result-detail">
+            <section className="result-detail animated pulse">
                 <section className="result-detail__image">
                     <img src={media.main}/>
                 </section>

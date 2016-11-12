@@ -28,6 +28,7 @@ class SearchPage extends React.Component {
     render() {
         let markers = [];
         let defaultCenter = {lat: 52.3747388, lng: 4.7585316};
+
         if ('attraction' in this.state.result.data) {
             const {attraction, parking, shop} = this.state.result.data;
 

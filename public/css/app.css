@@ -1,3 +1,4 @@
+@import url(/node_modules/animate.css/animate.min.css);
 .margin-left-small {
   margin-left: 6px; }
 
@@ -137,7 +138,10 @@ input {
   text-align: center;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
   position: relative;
-  height: 300px; }
+  height: 300px;
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s; }
   .result--item--image {
     border-radius: 3px 3px 0 0;
     width: 100%;
@@ -174,12 +178,20 @@ input {
   width: 100%;
   text-align: center;
   position: relative;
-  height: 300px; }
+  height: 300px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s; }
   .result-detail__image {
     width: 300px;
     overflow: hidden;
     height: 100%;
-    display: inline-block; }
+    display: inline-block;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+    .result-detail__image img {
+      height: 100%; }
   .result-detail__details {
     width: calc(100% - 300px);
     height: 100%;
