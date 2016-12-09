@@ -47,7 +47,7 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className="planner-search planner-search-bar">
-                <i id="search-button" className="fa fa-search" aria-hidden="true" onClick={this.search}></i>
+                <i id="search-button" className="fa fa-search" aria-hidden="true" onClick={this.search} />
                 <input type="text" className="search-input" id="search" onChange={this.handleTypeEvent}
                        value={this.state.searchQuery}/>
             </div>

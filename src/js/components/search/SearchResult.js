@@ -45,7 +45,7 @@ class SearchResult extends React.Component {
                     closeDetails={() => this.closeDetails()}
                     key={counter}
                     id={counter}
-                />;
+                />
             }
 
             return <SearchItem className={className} key={counter} item={item} id={counter} showDetails={(id) => this.showDetails(id)}/>;
