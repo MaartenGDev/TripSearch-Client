@@ -1,5 +1,5 @@
 # Project TripSearch Client
-This is the React SPA for the TripSearch Api
+This is the React SPA for the [TripSearch Api](https://github.com/MaartenGDev/TripSearch)
 
 
 ## Preview
